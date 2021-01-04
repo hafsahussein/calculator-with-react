@@ -15,7 +15,7 @@ const App = () => {
      const cName = button.className;
      if(cName === 'number'){
       stateSetter({
-         ...state, result:result+button.id
+         ...state, result:result.length<15?result+button.id:result
        })
      }
      else if(cName === 'operator'){
@@ -66,7 +66,7 @@ const App = () => {
       const backspace = () =>{
         const {result} = state;
         stateSetter({
-          ...state, result:result.replace(/.$/,"")
+          ...state, result:String(result).replace(/.$/,"")
         })
       }
 
@@ -87,7 +87,6 @@ const App = () => {
             history:''
           })
          }
-
   return ( 
     <div className = "app">
     <Calculator result = {state.result} 
